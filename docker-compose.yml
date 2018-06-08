@@ -1,0 +1,14 @@
+version: '2'
+services:
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+  web:
+    build: .
+    working_dir: /usr/src/app
+    command: npm start
+    ports:
+      - "1111:5001"
+    depends_on:
+      - mongo
